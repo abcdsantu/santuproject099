@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: santudb
-          image: santu458/santudb099:V1 
+          image: santu458/santudb099:V1
           volumeMounts:
             - mountPath:  /var/lib/mysql
               name: santudbvol
@@ -28,7 +28,7 @@ spec:
               valueFrom:  
                 secretKeyRef:
                   name: app-secret
-                  key:  dbpass
+                  key:  db-pass
       nodeSelector:
         zone: santunode1
       volumes:
