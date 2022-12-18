@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: santudb
+  labels:
+    app:  santudb
+spec: 
+  selector: 
+    matchLabels:
+      app:  santudb
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app:  santudb
+    spec:
+      containers:
+        - name: santudb
+          image:  vprofile/vprofiledb:V1
+          args:
+             - "--ignore-db-dir=lost+found"
+          volumeMounts:
+            - mountPath:  /var/lib/mysql
+              name: santu-db-data
+          ports:          
+            - name: santudb-port
+              containerPort:  3306
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef: 
+                  name: santuapp-secret
+                  key:  db-pass
+      nodeSelector:
+        zone: us-east-2a
+      volumes:
+        - name: santu-db-data
+          awsElasticBlockStore:
+            volumeID: vol-0332366a667817089
+            fsType: ext4

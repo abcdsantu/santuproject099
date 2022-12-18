@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: santuapp
+  labels: 
+    app:  santuapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app:  santuapp
+  template:
+    metadata:
+      labels:
+        app:  santuapp
+    spec:
+      containers:
+        - name: santuapp
+          image:  vprofile/vprofileapp:V1
+          ports:
+            - name: santuapp-port
+              containerPort:  8080
+      initContainers:
+        - name: init-mydb
+          image:  busybox
+          command:  ['sh', '-c', 'echo The app is running! && sleep 10']
+        - name: init-memcache
+          image:  busybox
+          command:  ['sh', '-c', 'echo The app is running! && sleep 10']

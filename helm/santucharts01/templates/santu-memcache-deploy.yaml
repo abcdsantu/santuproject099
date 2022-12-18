@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: santumemc
+  labels:
+    app:  santumemc
+spec:
+  selector:
+    matchLabels:
+      app: santumemc 
+  replicas: 1
+  template:
+    metadata:
+      labels: 
+        app:  santumemc
+    spec:
+      containers:
+        - name: santumemc
+          image: memcached 
+          ports:
+            - name: santumemc-port
+              containerPort: 11211

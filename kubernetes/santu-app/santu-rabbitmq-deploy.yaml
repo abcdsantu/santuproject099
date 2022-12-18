@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: santumq01
+  labels:
+    app: santumq01
+spec:
+  selector:
+    matchLabels:
+      app:  santumq01
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app:  santumq01
+    spec:
+      containers:
+        - name: santumq01
+          image:  rabbitmq
+          ports:
+            - name: santumq01-port
+              containerPort:  15672
+          env:
+            - name: RABBITMQ_DEFAULT_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: santuapp-secret
+                  key:  rmq-pass
+            - name: RABBITMQ_DEFAULT_USERNAME
+              value:  "guest"
+

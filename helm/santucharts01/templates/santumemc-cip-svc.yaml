@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: santumemc01
+spec:
+  ports:
+    - port: 11211
+      targetPort: santumemc-port
+      protocol: TCP
+  selector:
+    app: santumemc 
+  type: ClusterIP

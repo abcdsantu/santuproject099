@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: santudb
+spec:
+  ports:
+    - port: 3306
+      targetPort: santudb-port
+      protocol: TCP
+  selector:
+    app:  santudb
+  type: ClusterIP

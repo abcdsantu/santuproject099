@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: santurmq
+spec:
+  ports:
+    - port: 15672
+      targetPort: santurmq-port
+      protocol: TCP
+  selector:
+    app: santurmq
+  type: ClusterIP
