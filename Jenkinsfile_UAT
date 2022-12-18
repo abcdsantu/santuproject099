@@ -77,11 +77,5 @@ pipeline {
 					sh "helm upgrade --install --force sanprofl-stack helm/santucharts01 --set app.image=$registry:V$BUILD_NUMBER --namespace santuproj05 "
 				}
         }
-		
-		stage ("PROD Deployment"){
-			steps{
-				sh "helm upgrade --install --force sanprofl-stack helm/santucharts01 --set app.image=$registry:V$BUILD_NUMBER --namespace santuproj05 "
-				}
-		}
     }
 }
