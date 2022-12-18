@@ -3,6 +3,6 @@
     - name: log into docker hub registry
       shell: docker login -u santu458 -p dckr_pat_u065r_4Qrq4CojzPVCPZh4LUQ8w
     - name: Pull the image from docker hub
-      shell: docker pull santu458/santuappdock:{{BUILD_NUMBER}}
+      shell: docker pull santu458/santuproject099:{{BUILD_NUMBER}}
     - name: Run the container using the Image
       shell: docker run --name=santuspringboot -p 8080:8080 --detach santu458/santuappdock:{{BUILD_NUMBER}}
