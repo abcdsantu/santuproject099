@@ -14,7 +14,7 @@ pipeline {
                 }  
             }
         }
-        stage('Build Docker image'){
+        stage('Sonar QG'){
             steps{
                 script{
                     sonarQuality()                
