@@ -4,7 +4,7 @@ pipeline {
     agent any
     tools{
         maven "maven1"
-        sonarQube "sonar"
+        
     }
 
     stages {
@@ -20,7 +20,7 @@ pipeline {
             steps{
                 script{
                     
-                    sonarQubeEnv(sonarQube)
+                    
                     sonarQuality()
                     
                 }                             
