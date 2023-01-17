@@ -30,7 +30,7 @@ pipeline {
         stage('Build Docker image'){
             steps{
                 script{
-                    buildDockerImage("santu458/santuproject099")                
+                    buildDockerImage("santu458/santuproject099 +':V$BUILD_NUMBER'")                
                 }
             }
         }
