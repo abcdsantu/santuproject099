@@ -14,10 +14,15 @@ pipeline {
                 }  
             }
         }
+    
         stage('Sonar QG'){
             steps{
-               
-                    sonarQuality()                
+                script{
+                    
+                    sonarQubeEnv()
+                    sonarQuality()
+                    
+                }                             
                 
             }
         }
