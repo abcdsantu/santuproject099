@@ -19,7 +19,7 @@ pipeline {
             steps{
                 script{
                     
-                    sonarQubeEnv("sonar")
+                    sonarQubeEnv.call["sonar"]
                     sonarQuality()
                     
                 }                             
